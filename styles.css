@@ -1,0 +1,57 @@
+:root{
+  --bg:#0e0f12; --card:#151821; --ink:#eef1f7; --muted:#98a2b3; --accent:#5dd3ff;
+  --grid-gap:14px; --radius:12px; --border:1px solid #222837;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font:14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  background:var(--bg); color:var(--ink);
+}
+.container{max-width:1080px; margin:24px auto; padding:0 16px}
+.subtle{color:var(--muted)}
+.small{font-size:12px}
+h1{font-size:24px; margin:8px 0}
+h2{font-size:16px; margin:0 0 8px 0}
+
+.card{
+  background:var(--card); border:var(--border); border-radius:var(--radius);
+  padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.grid{display:grid; gap:var(--grid-gap)}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.grid.two{grid-template-columns:1fr}}
+
+.field{display:flex; flex-direction:column; gap:6px}
+label{font-weight:600}
+input{
+  background:#0f121a; color:var(--ink); border:var(--border); border-radius:10px;
+  padding:10px 12px; outline:none; transition:border-color .15s ease;
+}
+input:focus{border-color:#2e87ff}
+
+.divider{height:1px; background:#232838; margin:4px 0 8px 0; grid-column:1/-1}
+
+.actions{display:flex; gap:10px; align-items:center; margin-top:4px}
+button{
+  appearance:none; border-radius:10px; border:var(--border); background:#1a2030;
+  color:var(--ink); padding:10px 14px; cursor:pointer; font-weight:600;
+}
+button:hover{border-color:#384766}
+.ghost{background:transparent}
+
+.chart{position:relative; height:320px}
+.tooltip{
+  position:absolute; pointer-events:none; background:#0b0e14; color:var(--ink);
+  border:1px solid #2a3347; border-radius:8px; padding:6px 8px; font-size:12px;
+  transform:translate(-50%,-110%); white-space:nowrap; box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.axis text{fill:var(--muted); font-size:11px}
+.axis path,.axis line{stroke:#2a3347}
+.line{fill:none; stroke:var(--accent); stroke-width:2}
+.area{fill:rgba(93,211,255,.08)}
+.point{fill:#fff; stroke:var(--accent); stroke-width:1.5}
+
+#summary p{margin:.25rem 0}
+

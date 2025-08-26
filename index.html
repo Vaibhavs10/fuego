@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FIRE Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>FIRE Simulator</h1>
+      <p class="subtle">Minimal, interactive savings and withdrawal modeling</p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <form id="controls" class="grid">
+          <div class="field">
+            <label for="startBalance">Current Savings</label>
+            <input id="startBalance" type="number" min="0" step="100" value="50000" />
+          </div>
+          <div class="field">
+            <label for="monthlyContribution">Monthly Contribution</label>
+            <input id="monthlyContribution" type="number" min="0" step="50" value="1500" />
+          </div>
+          <div class="field">
+            <label for="annualReturnSave">Annual Return (saving) %</label>
+            <input id="annualReturnSave" type="number" step="0.1" value="6.0" />
+          </div>
+          <div class="field">
+            <label for="yearsSaving">Years Saving</label>
+            <input id="yearsSaving" type="number" min="1" step="1" value="15" />
+          </div>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="field">
+            <label for="annualWithdrawal">Annual Withdrawal (retirement)</label>
+            <input id="annualWithdrawal" type="number" min="0" step="500" value="40000" />
+          </div>
+          <div class="field">
+            <label for="annualReturnRetire">Annual Return (retirement) %</label>
+            <input id="annualReturnRetire" type="number" step="0.1" value="5.0" />
+          </div>
+          <div class="field">
+            <label for="yearsWithdrawing">Years Withdrawing</label>
+            <input id="yearsWithdrawing" type="number" min="1" step="1" value="35" />
+          </div>
+          <div class="actions">
+            <button id="runBtn" type="submit">Run Simulation</button>
+            <button id="resetBtn" type="button" class="ghost">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="grid two">
+        <div class="card">
+          <h2>Savings Growth</h2>
+          <div id="chartSavings" class="chart" role="img" aria-label="Savings growth chart"></div>
+        </div>
+        <div class="card">
+          <h2>Withdrawal Decay</h2>
+          <div id="chartWithdrawal" class="chart" role="img" aria-label="Withdrawal chart"></div>
+        </div>
+      </section>
+
+      <section class="card" id="summary" hidden>
+        <h2>Summary</h2>
+        <div class="grid two">
+          <div>
+            <p><strong>At Retirement:</strong> <span id="sumRetireBal">—</span></p>
+            <p><strong>Total Contributed:</strong> <span id="sumContrib">—</span></p>
+          </div>
+          <div>
+            <p><strong>Years Funds Last:</strong> <span id="sumYearsLast">—</span></p>
+            <p><strong>Final Balance:</strong> <span id="sumFinalBal">—</span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container subtle small">
+      <p>Tip: Adjust inputs and hover charts for details.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
