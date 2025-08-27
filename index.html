@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUEGO - Financial Independence Path Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <span class="emoji">🔥</span>
+                        </div>
+                        <div class="title-section">
+                            <h1 class="main-title">FUEGO</h1>
+                            <p class="subtitle">Financial Independence Path Calculator</p>
+                        </div>
+                    </div>
+                    <div class="quick-metrics">
+                        <div class="metric">
+                            <div class="metric-value" id="header-retirement-age">Never</div>
+                            <div class="metric-label">Retirement Age</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="header-net-worth">€0M</div>
+                            <div class="metric-label">Final Net Worth</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Left Panel - Assumptions -->
+                    <div class="assumptions-panel">
+                        <div class="panel-card">
+                            <h2 class="panel-title">
+                                <span class="panel-icon">⚙️</span>
+                                Your Assumptions
+                            </h2>
+                            
+                            <div class="sliders-container" id="sliders-container">
+                                <!-- Sliders will be generated dynamically by JavaScript -->
+                            </div>
+
+                            <!-- Quick Summary -->
+                            <div class="quick-summary">
+                                <h3 class="summary-title">📊 Key Metrics</h3>
+                                <div class="summary-metrics">
+                                    <div class="summary-row">
+                                        <span class="summary-label">Monthly Net Income:</span>
+                                        <span class="summary-value" id="monthly-net-income">€0</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label">Monthly Savings:</span>
+                                        <span class="summary-value" id="monthly-savings">€0</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label">Savings Rate:</span>
+                                        <span class="summary-value" id="savings-rate">0%</span>
+                                    </div>
+                                    <hr class="summary-divider">
+                                    <div class="summary-row">
+                                        <span class="summary-label">FI Number:</span>
+                                        <span class="summary-value" id="fi-number">€0M</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label">Years to FI:</span>
+                                        <span class="summary-value" id="years-to-fi">Never</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel - Visualization -->
+                    <div class="visualization-panel">
+                        <div class="panel-card">
+                            <div class="visualization-header">
+                                <h2 class="panel-title">
+                                    <span class="panel-icon">📈</span>
+                                    Your Financial Journey
+                                </h2>
+                                <div class="journey-badges">
+                                    <span class="badge" id="fi-badge" style="display: none;">
+                                        🎯 Financial Independence at age <span id="fi-age">0</span>
+                                    </span>
+                                    <span class="badge" id="net-worth-badge" style="display: none;">
+                                        Final Net Worth: <span id="final-net-worth">€0</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="charts-container">
+                                <!-- Net Worth Growth Chart -->
+                                <div class="chart-section">
+                                    <h3 class="chart-title">Net Worth Over Time</h3>
+                                    <div class="chart-container">
+                                        <canvas id="net-worth-chart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Income vs Expenses Chart -->
+                                <div class="chart-section">
+                                    <h3 class="chart-title">Annual Income vs Expenses</h3>
+                                    <div class="chart-container">
+                                        <canvas id="income-expenses-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Metrics Summary -->
+                            <div class="metrics-grid">
+                                <div class="metric-card blue">
+                                    <div class="metric-value" id="retirement-age">Never</div>
+                                    <div class="metric-label">Retirement Age</div>
+                                </div>
+                                <div class="metric-card green">
+                                    <div class="metric-value" id="final-net-worth-card">€0</div>
+                                    <div class="metric-label">Final Net Worth</div>
+                                </div>
+                                <div class="metric-card purple">
+                                    <div class="metric-value" id="years-to-fi-card">N/A</div>
+                                    <div class="metric-label">Years to FI</div>
+                                </div>
+                                <div class="metric-card orange">
+                                    <div class="metric-value" id="final-annual-savings">€0</div>
+                                    <div class="metric-label">Final Annual Savings</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Optimization Suggestions -->
+                        <div class="optimization-panel">
+                            <h3 class="optimization-title">
+                                <span class="optimization-icon">💡</span>
+                                Optimization Suggestions
+                            </h3>
+                            <div class="suggestions-grid" id="suggestions-grid">
+                                <!-- Suggestions will be generated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-title">
+                        <strong>FUEGO</strong> - Your path to financial independence
+                    </p>
+                    <p class="footer-text">
+                        Built with vanilla HTML, CSS, and JavaScript. 
+                        Calculations based on the 4% rule and compound interest principles.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="financial-calculator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
